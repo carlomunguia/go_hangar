@@ -2,20 +2,22 @@ package main
 
 import "log"
 
-type myStruct struct {
+type miStruct struct {
 	FirstName string
 }
 
-func (m *myStruct) printFirstName() string {
+func (m *miStruct) printFirstName() string {
 	return m.FirstName
 }
 
 func main() {
-	var myVar myStruct
-	myVar.FirstName = "Joe"
+	var miVar miStruct
+	miVar.FirstName = "John"
 
-	myVar2 := myStruct{FirstName: "Mary"}
+	miVar2 := miStruct{
+		FirstName: "Mary",
+	}
 
-	log.Println("myVar is set to", myVar.printFirstName())
-	log.Println("myVar2 is set to", myVar2.printFirstName())
+	log.Println("miVar is set to:", miVar.printFirstName())
+	log.Println("mivar2 is set to: ", miVar2.printFirstName())
 }
