@@ -1,4 +1,4 @@
-package main
+package lissajous
 
 import (
 	"image"
@@ -46,4 +46,8 @@ func lissajous(out io.Writer) {
 		anim.Image = append(anim.Image, img)
 	}
 	gif.EncodeAll(out, &anim) //NOTE: ignoring all encoding errors
+
+	const array = [1,2,3,4]
+	array.
+
 }

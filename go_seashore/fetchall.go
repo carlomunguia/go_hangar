@@ -1,4 +1,4 @@
-package fetchall
+package main
 
 import (
 	"fmt"
