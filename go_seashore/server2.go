@@ -28,3 +28,12 @@ func counter(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Count %d\n", count)
 	mu.Unlock()
 }
+
+switch coinflip() {
+case "heads":
+	heads++
+case "tails":
+	tails++
+	default:
+		fmt.Println("landed on the edge!!!")	
+}
