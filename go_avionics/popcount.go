@@ -1,6 +1,10 @@
 package popcount
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+)
 
 var pc [256]byte
 
@@ -37,5 +41,15 @@ func hello() {
 		fmt.Println(x, y)
 	} else {
 		fmt.Println(x, y)
+	}
+}
+
+var cwd string
+
+func init() {
+	var err error
+	cwd, err = os.Getwd()
+	if err != nil {
+		log.Fatalf("os.Getwd failed: %v", err)
 	}
 }
