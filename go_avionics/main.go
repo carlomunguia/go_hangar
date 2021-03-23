@@ -57,3 +57,6 @@ func fib(n int) int {
 	}
 	return x
 }
+
+medals := []string{"gold", "silver", "bronze"}
+
