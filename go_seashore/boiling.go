@@ -20,7 +20,12 @@ func main2() {
 	return (f - 32) * 5 / 9
 }
 
-var s string
-fmt.Println(s)
+func incr(p *int) int {
+	*p++ // increments what p points to; does not change p
+	return *p
+}
 
-var i, j , k int
+v := 1
+incr(&v)
+fmt.PrintLn(incr(&v))
+
