@@ -1,55 +1,30 @@
 package main
 
-import "fmt"
+import (
+	"log"
+	"math/rand"
+	"time"
+)
 
-type Animal interface {
-	Says() string
-	NumberOfLegs() int
-}
+const numPool = 10
 
-type Dog struct {
-	Name  string
-	Breed string
-}
-
-type Gorilla struct {
-	Name          string
-	Color         string
-	NumberOfTeeth int
+func CalculateValue(intChan chan int) {
+	randomNumber := RandomNumber(numPool)
+	intChan <- randomNumber
 }
 
 func main() {
-	dog := Dog{
-		Name:  "Samson",
-		Breed: "Shih Tzu",
-	}
-	PrintInfo(&dog)
+	intChan := make(chan int)
+	defer close(intChan)
 
-	gorilla := Gorilla{
-		Name:          "Jacques",
-		Color:         "Silverback",
-		NumberOfTeeth: 38,
-	}
+	go CalculateValue(intChan)
 
-	PrintInfo(&gorilla)
+	num := <-intChan
+	log.Println(num)
 }
 
-func PrintInfo(a Animal) {
-	fmt.Println("This animal says", a.Says(), "and has", a.NumberOfLegs(), "legs")
-}
-
-func (d *Dog) Says() string {
-	return "Woof"
-}
-
-func (d *Dog) NumberOfLegs() int {
-	return 4
-}
-
-func (g *Gorilla) Says() string {
-	return "Roar"
-}
-
-func (g *Gorilla) NumberOfLegs() int {
-	return 2
+func RandomNumber(n int) int {
+	rand.Seed(time.Now().UnixNano())
+	value := rand.Intn(n)
+	return value
 }
